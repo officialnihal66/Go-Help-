@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Help</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoHelp Official</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f75ff,#00c853);
+    color: white;
+    text-align: center;
+}
+.container {
+    padding: 30px;
+}
+h1 {
+    font-size: 28px;
+}
+button {
+    padding: 15px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #0f75ff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.service-box {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+}
+</style>
 </head>
+
 <body>
-    <h1>Welcome to Go Help</h1>
-    <p>For assistance, please contact us via WhatsApp at 8423094755.</p>
+
+<div class="container">
+    <h1>🚀 GoHelp Official</h1>
+    <p>काम छोटा हो या बड़ा — GoHelp हमेशा खड़ा 💪</p>
+
+    <div class="service-box">📦 दवाई</div>
+    <div class="service-box">📄 बिल जमा</div>
+    <div class="service-box">🏦 बैंक काम</div>
+    <div class="service-box">🛠️ प्लंबर</div>
+    <div class="service-box">🪚 बढ़ई</div>
+
+    <button onclick="bookNow()">Book Service</button>
+    <br>
+    <button id="installBtn" style="display:none;">Download App</button>
+</div>
+
+<script>
+function bookNow(){
+    window.location.href = "https://wa.me/918423094755";
+}
+
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block';
+});
+
+installBtn.addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+    });
+});
+</script>
+
 </body>
 </html>
